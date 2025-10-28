@@ -4,4 +4,39 @@ version = "0.1.0"
 description = "一个基于深度学习的文章总结和分类工具"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "flask>=3.1.2",
+    "lxml-html-clean>=0.4.3",
+    "newspaper3k>=0.2.8",
+    "nltk>=3.9.2",
+    "numpy>=2.3.4",
+    "torch>=2.6.0",
+    "torchvision>=0.21.0",
+    "torchaudio>=2.6.0",
+    "transformers>=4.57.1",
+]
+
+
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url  = "https://download.pytorch.org/whl/cu126"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url  = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv.sources]
+torch = [
+  { index = "pytorch-cu126", marker = "sys_platform == 'win32' or sys_platform == 'linux'" },
+  { index = "pytorch-cpu",   marker = "sys_platform == 'darwin'" },
+]
+torchvision = [
+  { index = "pytorch-cu126", marker = "sys_platform == 'win32' or sys_platform == 'linux'" },
+  { index = "pytorch-cpu",   marker = "sys_platform == 'darwin'" },
+]
+torchaudio = [
+  { index = "pytorch-cu126", marker = "sys_platform == 'win32' or sys_platform == 'linux'" },
+  { index = "pytorch-cpu",   marker = "sys_platform == 'darwin'" },
+]
