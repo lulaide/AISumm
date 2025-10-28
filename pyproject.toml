@@ -1,7 +1,0 @@
-[project]
-name = "aisumm"
-version = "0.1.0"
-description = "一个基于深度学习的文章总结和分类工具"
-readme = "README.md"
-requires-python = ">=3.12"
-dependencies = []

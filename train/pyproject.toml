@@ -1,0 +1,43 @@
+[project]
+name = "train"
+version = "0.1.0"
+description = "Lightweight Chinese news key-sentence extractor / summarization training"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    # core dependencies
+    "datasets>=4.3.0",
+    "jsonlines>=4.0.0",
+    "rouge-chinese>=1.0.3",
+    "scikit-learn>=1.7.2",
+    "tqdm>=4.67.1",
+    "transformers>=4.57.1",
+    # add torch family; version here是逻辑约束（实际从下方索引安装）
+    "torch>=2.6.0",
+    "torchvision>=0.21.0",
+    "torchaudio>=2.6.0",
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url  = "https://download.pytorch.org/whl/cu126"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url  = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv.sources]
+torch = [
+  { index = "pytorch-cu126", marker = "sys_platform == 'win32' or sys_platform == 'linux'" },
+  { index = "pytorch-cpu",   marker = "sys_platform == 'darwin'" },
+]
+torchvision = [
+  { index = "pytorch-cu126", marker = "sys_platform == 'win32' or sys_platform == 'linux'" },
+  { index = "pytorch-cpu",   marker = "sys_platform == 'darwin'" },
+]
+torchaudio = [
+  { index = "pytorch-cu126", marker = "sys_platform == 'win32' or sys_platform == 'linux'" },
+  { index = "pytorch-cpu",   marker = "sys_platform == 'darwin'" },
+]
