@@ -42,7 +42,7 @@ class Summarizer:
     def __init__(
         self,
         model_name: str = "uer/roberta-tiny-wwm-chinese-cluecorpussmall",
-        ckpt_path: Optional[str] = "extractor_tiny_simple.pt",
+        ckpt_path: Optional[str] = "model/sum_model/extractor_tiny_simple.pt",
         max_len: int = 128,
         device: Optional[str] = None,      # "cuda" | "cpu" | "mps"
         use_fast_tokenizer: bool = True,
